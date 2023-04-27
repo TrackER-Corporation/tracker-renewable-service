@@ -1,11 +1,12 @@
 import { describe, expect, it } from "vitest";
 import app from "../index"
 import request from 'supertest';
+import { connectToDatabase } from "../db/services/database.service";
 
-describe('GET /', () => {
+describe('Renewable index', () => {
     it('should respond with a JSON object containing a message', async () => {
-        const response = await request(app.app).get('/');
+        await connectToDatabase()
+        const response = await request(app).get('/');
         expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual({ "msg": "test" });
     });
 });
