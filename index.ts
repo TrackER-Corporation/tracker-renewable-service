@@ -18,4 +18,4 @@ connectToDatabase()
 app.listen(port, () => console.info(`tracker-renewable-service is running`));
 
 
-export default { app }
+export default app 

@@ -4,7 +4,7 @@ import { create, deleteRenewable, getAll, getRenewableById, updateRenewable, get
 
 router.get('/:id', getRenewableById)
 router.get('/organization/:id', getRenewableByOrganizationId)
-router.get('/all/renewable', getAll)
+router.get('/', getAll)
 router.get('/building/:id', getRenewableByBuildingId)
 router.put('/:id', updateRenewable)
 router.put('/buildings/:id', updateRenewableBuildingsById)
