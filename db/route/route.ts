@@ -8,7 +8,7 @@ router.get('/', getAll)
 router.get('/building/:id', getRenewableByBuildingId)
 router.put('/:id', updateRenewable)
 router.put('/buildings/:id', updateRenewableBuildingsById)
-router.post('/renewable', create)
+router.post('/', create)
 router.delete('/:id', deleteRenewable)
 
 export default router;
