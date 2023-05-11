@@ -9,18 +9,16 @@ export const getRenewableById = asyncHandler(async (req: any, res: any) => {
     if (goal)
         res.status(200).json(goal)
     else {
-        res.status(400)
-        return
+        throw Error('Error')
     }
 })
 
 export const getRenewableByOrganizationId = asyncHandler(async (req: any, res: any) => {
-    console.log(req.params.id)
     const renewable = await collections.renewable?.find({ organizationId: new ObjectId(req.params.id) }).toArray()
     if (renewable && renewable.length > 0) {
         res.status(200).json(renewable)
     } else {
-        res.status(400).json({ message: 'Renewable not found.' })
+        throw Error('Error')
     }
 })
 
@@ -30,7 +28,7 @@ export const getRenewableByBuildingId = asyncHandler(async (req: any, res: any) 
     if (renewable) {
         res.status(200).json(renewable)
     } else {
-        res.status(400).json({ message: 'Renewable not found.' })
+        throw Error('Error')
     }
 })
 
@@ -43,8 +41,8 @@ export const getAll = asyncHandler(async (req: any, res: any) => {
 
 export const create = asyncHandler(async (req: any, res: any) => {
     if (!req.body.organizationId) {
-        res.status(400)
-        return
+
+        throw Error('Error')
     }
     const renewable = await collections.renewable?.insertOne({
         name: req.body.name,
@@ -60,50 +58,42 @@ export const create = asyncHandler(async (req: any, res: any) => {
 })
 
 export const updateRenewable = asyncHandler(async (req: any, res: any) => {
-    if (!req?.params?.id) {
-        res.status(400)
-        return
-    }
+    if (!req?.params?.id) throw Error('Error')
     const renewable = await collections.renewable?.find(req.params.id)
-    if (!renewable) {
-        res.status(400)
-        return
-    }
+    if (!renewable) throw Error('Error')
 
-    const update = await collections.renewable?.updateOne({ _id: new ObjectId(req?.params?.id) }, { $set: { ...req.body } }, {})
-    res.status(200).json(update)
+    const update = await collections.renewable?.findOneAndUpdate(
+        { _id: new ObjectId(req?.params?.id) },
+        { $set: { ...req.body } },
+        { returnDocument: 'after' }
+    )
+    res.status(200).json(update?.value)
 })
 
 
 export const updateRenewableBuildingsById = asyncHandler(async (req: any, res: any) => {
     if (!!req?.params?.id) {
-        res.status(400)
-        return
+
+        throw Error('Error')
     }
     const renewable = await collections.renewable?.findOne(new ObjectId(req.params.id))
-    if (!renewable) {
-        res.status(400)
-        return
-    }
+    if (!renewable) throw Error('Error')
 
     renewable.buildings.push(new ObjectId(req.body.building))
     renewable.save().then(() => {
         res.status(200).json(renewable)
     }).catch((e: string) => {
-        res.status(400)
-        throw new Error(e)
+        throw Error(e)
     })
 })
 
 export const deleteRenewable = asyncHandler(async (req: any, res: any) => {
     const renewable = await collections.renewable?.findOne({ _id: new ObjectId(req.params.id) })
     if (!renewable) {
-        res.status(400)
-        return
+        throw Error('Error')
     }
     if (!req.params.id) {
-        res.status(401)
-        return
+        throw Error('Error')
     }
     const update = await collections.renewable?.deleteOne(renewable)
     res.status(200).json(update)
