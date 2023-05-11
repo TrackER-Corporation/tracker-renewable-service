@@ -18,9 +18,7 @@ describe('Renewable controller', () => {
             status: vi.fn().mockReturnThis(),
             json: vi.fn(),
         };
-
-        await getRenewableById(req, res);
-        expect(res.status).toHaveBeenCalledWith(400);
+        expect(async () => await getRenewableById(req, res, {})).rejects.toThrow(/Error/);
     });
 
 
@@ -48,8 +46,7 @@ describe('Renewable controller', () => {
             status: vi.fn().mockReturnThis(),
             json: vi.fn(),
         };
-        await getRenewableByOrganizationId(req, res);
-        expect(res.status).toHaveBeenCalledWith(400);
+        expect(async () => await getRenewableByOrganizationId(req, res, {})).rejects.toThrow(/Error/);
     });
 
     it('should return existing renewable from organization Id', async () => {
@@ -74,8 +71,7 @@ describe('Renewable controller', () => {
             status: vi.fn().mockReturnThis(),
             json: vi.fn(),
         };
-        await getRenewableByBuildingId(req, res);
-        expect(res.status).toHaveBeenCalledWith(400);
+        expect(async () => await getRenewableByBuildingId(req, res, {})).rejects.toThrow(/Error/);
     });
 
 
@@ -118,8 +114,7 @@ describe('Renewable controller', () => {
             status: vi.fn().mockReturnThis(),
             json: vi.fn(),
         };
-        await create(req, res);
-        expect(res.status).toHaveBeenCalledWith(400);
+        expect(async () => await create(req, res, {})).rejects.toThrow(/Error/);
     });
 
     it('should update a renewable', async () => {
@@ -143,8 +138,7 @@ describe('Renewable controller', () => {
             status: vi.fn().mockReturnThis(),
             json: vi.fn(),
         };
-        await updateRenewable(req, res);
-        expect(res.status).toHaveBeenCalledWith(400);
+        expect(async () => await updateRenewable(req, res, {})).rejects.toThrow(/Error/);
     });
 
     it('should not update a renewable', async () => {
@@ -158,10 +152,8 @@ describe('Renewable controller', () => {
             status: vi.fn().mockReturnThis(),
             json: vi.fn(),
         };
-        await updateRenewableBuildingsById(req, res);
-        expect(res.status).toHaveBeenCalledWith(400);
-        await updateRenewableBuildingsById(req2, res);
-        expect(res.status).toHaveBeenCalledWith(400);
+        expect(async () => await updateRenewableBuildingsById(req, res, {})).rejects.toThrow(/Error/);
+        expect(async () => await updateRenewableBuildingsById(req2, res, {})).rejects.toThrow(/Error/);
     });
 
 
@@ -177,7 +169,6 @@ describe('Renewable controller', () => {
             status: vi.fn().mockReturnThis(),
             json: vi.fn()
         };
-        await deleteRenewable(req, res);
-        expect(res.status).toHaveBeenCalledWith(400);
+        expect(async () => await deleteRenewable(req, res, {})).rejects.toThrow(/Error/);
     })
 });
