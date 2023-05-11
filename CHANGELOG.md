@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/TrackER-Corporation/tracker-renewable-service/compare/v1.1.0...v1.1.1) (2023-05-11)
+
+
+### Bug Fixes
+
+* replace return with throw error ([df81e7a](https://github.com/TrackER-Corporation/tracker-renewable-service/commit/df81e7a4f57b1e84e80300ae0b0bf22474be8c15))
+
 ## [1.1.0](https://github.com/TrackER-Corporation/tracker-renewable-service/compare/v1.0.0...v1.1.0) (2023-05-02)
 
 
