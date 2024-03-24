@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.2](https://github.com/TrackER-Corporation/tracker-renewable-service/compare/v1.1.1...v1.1.2) (2024-03-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @vitejs/plugin-react to v4.0.4 ([c60ded2](https://github.com/TrackER-Corporation/tracker-renewable-service/commit/c60ded276f8d56a85f3b42679eb8653e23942374))
+* **deps:** update dependency dotenv to v16.3.1 ([8539a1f](https://github.com/TrackER-Corporation/tracker-renewable-service/commit/8539a1f75a894da422ab72a887c11dd3da3f0a39))
+* **deps:** update dependency express-http-proxy to v2 ([5bf9c9d](https://github.com/TrackER-Corporation/tracker-renewable-service/commit/5bf9c9d3eaacb8b6c8115cc99f15c9b6b212eaa3))
+* **deps:** update dependency mongodb to v5.7.0 ([4a513fc](https://github.com/TrackER-Corporation/tracker-renewable-service/commit/4a513fc0a5a92b760553f1d80f76e1cf7b9a9be5))
+* **deps:** update socket.io packages to v4.7.2 ([fab2337](https://github.com/TrackER-Corporation/tracker-renewable-service/commit/fab2337ad23e4b54c9cea4f334dfb3979ffb5716))
+
 ## [1.1.1](https://github.com/TrackER-Corporation/tracker-renewable-service/compare/v1.1.0...v1.1.1) (2023-05-11)
 
 
